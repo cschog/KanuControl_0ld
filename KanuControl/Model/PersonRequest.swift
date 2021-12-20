@@ -16,8 +16,7 @@ import GRDBQuery
 ///     }
 struct PersonRequest: Queryable {
     enum Ordering {
-        case byAgeUp
-        case byAgeDown
+        case byName
     }
     
     /// The ordering used by the person request.
@@ -46,10 +45,8 @@ struct PersonRequest: Queryable {
     // to test UserRequest.
     func fetchValue(_ db: Database) throws -> [Person] {
         switch ordering {
-        case .byAgeUp:
-            return try Person.all().orderedByAgeUp().fetchAll(db)
-        case .byAgeDown:
-            return try Person.all().orderedByAgeDown().fetchAll(db)
+        case .byName:
+            return try Person.all().orderedByName().fetchAll(db)
         }
     }
 }

@@ -28,11 +28,8 @@ struct PersonEditionView: View {
     }
 }
 
-//struct PersonEditionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            UserEditionView()
-//                .navigationBarTitle("Person Edition")
-//        }
-//    }
-//}
+struct PersonEditionView_Previews: PreviewProvider {
+    static var previews: some View {
+        PersonEditionView(person: Person.init(name: "", vorname: "", nameGesamt: "", statusDatum: ""))
+        }
+    }

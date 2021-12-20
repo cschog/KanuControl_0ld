@@ -37,11 +37,10 @@ private struct PersonRow: View {
     
     var body: some View {
         HStack {
-            Text(person.name)
+            Text(person.nameGesamt)
             Spacer()
-            Text(person.email)
-            Spacer()
-            Text("\(person.age)").foregroundColor(.gray)
+            Text(person.email ?? "")
+                .foregroundColor(.gray)
         }
     }
 }

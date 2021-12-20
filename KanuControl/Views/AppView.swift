@@ -7,7 +7,7 @@ struct AppView: View {
     @Environment(\.appDatabase) private var appDatabase
     
     /// The `players` property is automatically updated when the database changes
-    @Query(PersonRequest(ordering: .byAgeUp)) private var persons: [Person]
+    @Query(PersonRequest(ordering: .byName)) private var persons: [Person]
     
     /// We'll need to leave edit mode in several occasions.
     @State private var editMode = EditMode.inactive
@@ -31,17 +31,19 @@ struct AppView: View {
                     leading: HStack {
                         EditButton()
                         newPersonButton
-                    },
-                    trailing: ToggleOrderingButton(
-                        ordering: $persons.ordering,
-                        willChange: {
-                            // onChange(of: $players.wrappedValue.ordering)
-                            // is not able to leave the editing mode during
-                            // the animation of the list content.
-                            // Workaround: stop editing before the ordering
-                            // is changed, and the list content is updated.
-                            stopEditing()
-                        }))
+                    }
+                    //,
+//                    trailing: ToggleOrderingButton(
+//                        ordering: $persons.ordering,
+//                        willChange: {
+//                            // onChange(of: $players.wrappedValue.ordering)
+//                            // is not able to leave the editing mode during
+//                            // the animation of the list content.
+//                            // Workaround: stop editing before the ordering
+//                            // is changed, and the list content is updated.
+//                            stopEditing()
+//                        })
+                )
                 .toolbar { toolbarContent }
                 .onChange(of: persons) { persons in
                     if persons.isEmpty {
@@ -95,29 +97,29 @@ struct AppView: View {
     }
 }
 
-private struct ToggleOrderingButton: View {
-    @Binding var ordering: PersonRequest.Ordering
-    let willChange: () -> Void
-    
-    var body: some View {
-        switch ordering {
-        case .byAgeDown:
-            Button {
-                willChange()
-                ordering = .byAgeDown
-            } label: {
-                Label("Alter", systemImage: "arrowtriangle.down.fill").labelStyle(.titleAndIcon)
-            }
-        case .byAgeUp:
-            Button {
-                willChange()
-                ordering = .byAgeUp
-            } label: {
-                Label("Alter", systemImage: "arrowtriangle.up.fill").labelStyle(.titleAndIcon)
-            }
-        }
-    }
-}
+//private struct ToggleOrderingButton: View {
+//    @Binding var ordering: PersonRequest.Ordering
+//    let willChange: () -> Void
+//
+//    var body: some View {
+//        switch ordering {
+//        case .byName:
+//            Button {
+//                willChange()
+//                ordering = .byAgeUp
+//            } label: {
+//                Label("Alter", systemImage: "arrowtriangle.down.fill").labelStyle(.titleAndIcon)
+//            }
+//        case .byAgeUp:
+//            Button {
+//                // willChange()
+//                ordering = .byAgeDown
+//            } label: {
+//                Label("Alter", systemImage: "arrowtriangle.up.fill").labelStyle(.titleAndIcon)
+//            }
+//        }
+//    }
+//}
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {

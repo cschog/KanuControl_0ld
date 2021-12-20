@@ -39,8 +39,21 @@ struct AppDatabase {
             try db.create(table: "person") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("name", .text).notNull()
-                t.column("email", .text).notNull()
-                t.column("age", .integer).notNull()
+                t.column("vorname", .text).notNull()
+                t.column("geburtstag", .text)
+                t.column("sex", .text)
+                t.column("strasse", .text)
+                t.column("plz", .text)
+                t.column("ort", .text)
+                t.column("telefonFestnetz", .text)
+                t.column("telefonMobil", .text)
+                t.column("email", .text)
+                t.column("nameGesamt", .text).notNull()
+                t.column("status", .text).notNull()
+                t.column("statusDatum", .text).notNull()
+                t.column("bank", .text)
+                t.column("iban", .text)
+                t.column("bic", .text)
             }
         }
         
@@ -76,6 +89,22 @@ extension AppDatabase {
             throw ValidationError.missingName
         }
         try dbWriter.write { db in
+            person.nameGesamt = person.name + ", " + person.vorname
+            
+            // Create Date
+            let date = Date()
+
+            // Create Date Formatter
+            let dateFormatter = DateFormatter()
+
+            // Set Date Format
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+
+            // Convert Date to String
+            // dateFormatter.string(from: date)
+            
+            person.status = true
+            person.statusDatum = dateFormatter.string(from: date)
             try person.save(db)
         }
     }
@@ -87,12 +116,12 @@ extension AppDatabase {
         }
     }
     
-    /// Delete all Persons
-    func deleteAllPersons() throws {
-        try dbWriter.write { db in
-            _ = try Person.deleteAll(db)
-        }
-    }
+//    /// Delete all Persons
+//    func deleteAllPersons() throws {
+//        try dbWriter.write { db in
+//            _ = try Person.deleteAll(db)
+//        }
+//    }
     
     /// Refresh all persons (by performing some random changes, for demo purpose).
     func refreshPersons() throws {
