@@ -116,12 +116,12 @@ extension AppDatabase {
         }
     }
     
-//    /// Delete all Persons
-//    func deleteAllPersons() throws {
-//        try dbWriter.write { db in
-//            _ = try Person.deleteAll(db)
-//        }
-//    }
+    /// Delete all Persons
+    func deleteAllPersons() throws {
+        try dbWriter.write { db in
+            _ = try Person.deleteAll(db)
+        }
+    }
     
     /// Refresh all persons (by performing some random changes, for demo purpose).
     func refreshPersons() throws {
