@@ -15,13 +15,7 @@ struct AppView: View {
     /// Tracks the presentation of the player creation sheet.
     @State private var newUserIsPresented = false
     
-    // If you want to define the query on initialization, you will prefer:
-    //
-    // @Query<PlayerRequest> private var players: [Player]
-    //
-    // init(initialOrdering: PlayerRequest.Ordering) {
-    //     _players = Query(PlayerRequest(ordering: initialOrdering))
-    // }
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationView {
@@ -55,14 +49,20 @@ struct AppView: View {
     }
     
     private var toolbarContent: some ToolbarContent {
+       
         ToolbarItemGroup(placement: .bottomBar) {
+
             Button {
                 // Don't stopEditing() here because this is
                 // performed `onChange(of: players)`
-                try! appDatabase.deleteAllPersons()
+                showingAlert.toggle()
+
             } label: {
                 Image(systemName: "trash").imageScale(.large)
             }
+            .alert("Wirklich alles löschen?", isPresented: $showingAlert) {
+                Button("OK", role: nil, action: {try! appDatabase.deleteAllPersons()})
+                Button("Cancel", role: .cancel, action: {})}
             
             Spacer()
             
@@ -97,29 +97,6 @@ struct AppView: View {
     }
 }
 
-//private struct ToggleOrderingButton: View {
-//    @Binding var ordering: PersonRequest.Ordering
-//    let willChange: () -> Void
-//
-//    var body: some View {
-//        switch ordering {
-//        case .byName:
-//            Button {
-//                willChange()
-//                ordering = .byAgeUp
-//            } label: {
-//                Label("Alter", systemImage: "arrowtriangle.down.fill").labelStyle(.titleAndIcon)
-//            }
-//        case .byAgeUp:
-//            Button {
-//                // willChange()
-//                ordering = .byAgeDown
-//            } label: {
-//                Label("Alter", systemImage: "arrowtriangle.up.fill").labelStyle(.titleAndIcon)
-//            }
-//        }
-//    }
-//}
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {

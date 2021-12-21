@@ -21,6 +21,7 @@
 		83A4C2B8276F9BC700C705DF /* KanuControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C2B7276F9BC700C705DF /* KanuControlApp.swift */; };
 		83A4C2BC276F9BC800C705DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BB276F9BC800C705DF /* Assets.xcassets */; };
 		83A4C2BF276F9BC800C705DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BE276F9BC800C705DF /* Preview Assets.xcassets */; };
+		83E75C1B2771F11100177DBF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = 83E75C1A2771F11100177DBF /* SSToastMessage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 			files = (
 				8384F9A3276F9D130079F14A /* GRDBQuery in Frameworks */,
 				8384F9A0276F9D010079F14A /* GRDB in Frameworks */,
+				83E75C1B2771F11100177DBF /* SSToastMessage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,7 @@
 			packageProductDependencies = (
 				8384F99F276F9D010079F14A /* GRDB */,
 				8384F9A2276F9D130079F14A /* GRDBQuery */,
+				83E75C1A2771F11100177DBF /* SSToastMessage */,
 			);
 			productName = KanuControl;
 			productReference = 83A4C2B4276F9BC700C705DF /* KanuControl.app */;
@@ -170,6 +173,7 @@
 			packageReferences = (
 				8384F99E276F9D010079F14A /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				8384F9A1276F9D130079F14A /* XCRemoteSwiftPackageReference "GRDBQuery" */,
+				83E75C192771F11100177DBF /* XCRemoteSwiftPackageReference "SSToastMessage" */,
 			);
 			productRefGroup = 83A4C2B5276F9BC700C705DF /* Products */;
 			projectDirPath = "";
@@ -427,6 +431,14 @@
 				kind = branch;
 			};
 		};
+		83E75C192771F11100177DBF /* XCRemoteSwiftPackageReference "SSToastMessage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSToastMessage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -439,6 +451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8384F9A1276F9D130079F14A /* XCRemoteSwiftPackageReference "GRDBQuery" */;
 			productName = GRDBQuery;
+		};
+		83E75C1A2771F11100177DBF /* SSToastMessage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83E75C192771F11100177DBF /* XCRemoteSwiftPackageReference "SSToastMessage" */;
+			productName = SSToastMessage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
