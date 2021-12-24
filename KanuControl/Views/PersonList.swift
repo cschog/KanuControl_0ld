@@ -45,14 +45,13 @@ private struct PersonRow: View {
     }
 }
 
-//struct PlayerList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            PlayerList(players: [
-//                Player(id: 1, name: "Arthur", score: 100),
-//                Player(id: 2, name: "Barbara", score: 1000),
-//            ])
-//                .navigationTitle("Preview")
-//        }
-//    }
-//}
+struct PersonList_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            PersonList(persons: [
+                Person(id: nil, name: "Schog", vorname: "Chris", geburtstag: nil, sex: nil, strasse: nil, plz: nil, ort: nil, telefonFestnetz: nil, telefonMobil: nil, email: "c.schog@icloud.com", nameGesamt: "Schog, Chris", status: true, statusDatum: "", bank: nil, iban: nil, bic: nil)
+            ])
+                .navigationTitle("Mitglieder")
+        }
+    }
+}

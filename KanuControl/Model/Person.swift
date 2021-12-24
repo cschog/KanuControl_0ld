@@ -29,6 +29,7 @@ struct Person: Identifiable, Equatable {
     var bic: String?
 }
 
+
 // MARK: - Persistence
 
 /// Make User a Codable Record.

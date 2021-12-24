@@ -26,17 +26,6 @@ struct AppView: View {
                         EditButton()
                         newPersonButton
                     }
-                    //,
-//                    trailing: ToggleOrderingButton(
-//                        ordering: $persons.ordering,
-//                        willChange: {
-//                            // onChange(of: $players.wrappedValue.ordering)
-//                            // is not able to leave the editing mode during
-//                            // the animation of the list content.
-//                            // Workaround: stop editing before the ordering
-//                            // is changed, and the list content is updated.
-//                            stopEditing()
-//                        })
                 )
                 .toolbar { toolbarContent }
                 .onChange(of: persons) { persons in
@@ -45,7 +34,7 @@ struct AppView: View {
                     }
                 }
                 .environment(\.editMode, $editMode)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var toolbarContent: some ToolbarContent {
@@ -56,7 +45,6 @@ struct AppView: View {
                 // Don't stopEditing() here because this is
                 // performed `onChange(of: players)`
                 showingAlert.toggle()
-
             } label: {
                 Image(systemName: "trash").imageScale(.large)
             }
@@ -65,13 +53,6 @@ struct AppView: View {
                 Button("Cancel", role: .cancel, action: {})}
             
             Spacer()
-            
-            Button {
-                stopEditing()
-                try! appDatabase.refreshPersons()
-            } label: {
-                Image(systemName: "arrow.clockwise").imageScale(.large)
-            }
         }
     }
     

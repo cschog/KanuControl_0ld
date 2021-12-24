@@ -108,11 +108,10 @@ extension PersonForm {
     }
 }
 
-//struct PersonFormView_Previews: PreviewProvider {
-//    let person = Person(from: Decoder as! Decoder)
-//    static var previews: some View {
-//        Group {
-//            PersonFormView(form: .constant(PersonForm(person)))
-//        }
-//    }
-//}
+struct PersonFormView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        PersonFormView(form: .constant(PersonForm(name: "", vorname: "", geburtstag: "", sex: "", strasse: "", plz: "", ort: "", telefonFestnetz: "", telefonMobil: "", email: "", namegesamt: "", status: true, statusDatum: "", bank: "", iban: "", bic: "")))
+        
+    }
+}

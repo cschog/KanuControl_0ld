@@ -33,8 +33,8 @@ struct AppDatabase {
         migrator.eraseDatabaseOnSchemaChange = true
         #endif
         
-        migrator.registerMigration("createPerson") { db in
-            // Create a table
+        migrator.registerMigration("KanuControl_DB_V1.0") { db in
+            // Create table "person"
             // See https://github.com/groue/GRDB.swift#create-tables
             try db.create(table: "person") { t in
                 t.autoIncrementedPrimaryKey("id")
@@ -48,13 +48,53 @@ struct AppDatabase {
                 t.column("telefonFestnetz", .text)
                 t.column("telefonMobil", .text)
                 t.column("email", .text)
-                t.column("nameGesamt", .text).notNull()
+                t.column("nameGesamt", .text)
+                    .notNull()
+                    .indexed()
                 t.column("status", .text).notNull()
                 t.column("statusDatum", .text).notNull()
                 t.column("bank", .text)
                 t.column("iban", .text)
                 t.column("bic", .text)
             }
+            // Create table "verein"
+            try db.create(table: "verein") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("name", .text).notNull()
+                t.column("kurz", .text).notNull()
+                t.column("strasse", .text).notNull()
+                t.column("plz", .text).notNull()
+                t.column("ort", .text).notNull()
+                t.column("telefon", .text).notNull()
+                t.column("homepage", .text).notNull()
+                t.column("kz", .text).notNull()
+                t.column("bank", .text).notNull()
+                t.column("kontoinhaber", .text).notNull()
+                t.column("iban", .text).notNull()
+                t.column("bic", .text).notNull()
+                t.column("logo", .text).notNull()
+            }
+            // Create table "funktion"
+                        try db.create(table: "funktion") { t in
+                            t.autoIncrementedPrimaryKey("id")
+                            t.column("name", .text).notNull()
+                        }
+            // Create relationship "mitglieder"
+            try db.create(table: "mitglied") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("personId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("person", onDelete: .cascade)
+                t.column("vereinId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("verein", onDelete: .setNull)
+                t.column("funktionId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("funktion", onDelete: .setNull)
+            } 
         }
         
         // Migrations for future application versions will be inserted here:
@@ -121,11 +161,6 @@ extension AppDatabase {
         try dbWriter.write { db in
             _ = try Person.deleteAll(db)
         }
-    }
-    
-    /// Refresh all persons (by performing some random changes, for demo purpose).
-    func refreshPersons() throws {
-
     }
 }
 
