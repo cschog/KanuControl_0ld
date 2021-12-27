@@ -24,7 +24,8 @@ struct AppDatabase {
     /// The DatabaseMigrator that defines the database schema.
     ///
     /// See <https://github.com/groue/GRDB.swift/blob/master/Documentation/Migrations.md>
-    private var migrator: DatabaseMigrator {
+    
+    var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
         
         #if DEBUG
@@ -34,7 +35,15 @@ struct AppDatabase {
         #endif
         
         migrator.registerMigration("KanuControl_DB_V1.0") { db in
-            // Create table "person"
+            // Create table "land"      ---> fertig
+                        try db.create(table: "land") { t in
+                            t.column("laenderCode", .text)
+                                .primaryKey()
+                            t.column("land", .text).notNull()
+                            t.column("flagge", .blob)
+                        }
+            
+            // Create table "person"  ---> fertig
             // See https://github.com/groue/GRDB.swift#create-tables
             try db.create(table: "person") { t in
                 t.autoIncrementedPrimaryKey("id")
@@ -42,6 +51,7 @@ struct AppDatabase {
                 t.column("vorname", .text).notNull()
                 t.column("geburtstag", .text)
                 t.column("sex", .text)
+                t.column("avatar", .blob)
                 t.column("strasse", .text)
                 t.column("plz", .text)
                 t.column("ort", .text)
@@ -51,35 +61,142 @@ struct AppDatabase {
                 t.column("nameGesamt", .text)
                     .notNull()
                     .indexed()
-                t.column("status", .text).notNull()
+                    .collate(.localizedCaseInsensitiveCompare)
+                t.column("status", .boolean).notNull()
                 t.column("statusDatum", .text).notNull()
                 t.column("bank", .text)
                 t.column("iban", .text)
                 t.column("bic", .text)
             }
-            // Create table "verein"
+            
+            // Create table "verein"   ---> fertig
             try db.create(table: "verein") { t in
                 t.autoIncrementedPrimaryKey("id")
-                t.column("name", .text).notNull()
-                t.column("kurz", .text).notNull()
-                t.column("strasse", .text).notNull()
-                t.column("plz", .text).notNull()
-                t.column("ort", .text).notNull()
-                t.column("telefon", .text).notNull()
-                t.column("homepage", .text).notNull()
-                t.column("kz", .text).notNull()
-                t.column("bank", .text).notNull()
-                t.column("kontoinhaber", .text).notNull()
-                t.column("iban", .text).notNull()
-                t.column("bic", .text).notNull()
-                t.column("logo", .text).notNull()
+                t.column("name", .text)
+                    .notNull()
+                    .collate(.localizedCaseInsensitiveCompare)
+                t.column("kurz", .text)
+                t.column("bezirk", .text)
+                t.column("strasse", .text)
+                t.column("plz", .text)
+                t.column("ort", .text)
+                t.column("telefon", .text)
+                t.column("homepage", .text)
+                t.column("kz", .text)         // kz = Vereinskennzeichen vom LSB
+                t.column("bank", .text)
+                t.column("kontoinhaber", .text)
+                t.column("iban", .text)
+                t.column("bic", .text)
+                t.column("rechtsform", .text)   // gemeinnütziger Verein, ... (später eigene Tabelle)
+                t.column("logo", .blob)
             }
-            // Create table "funktion"
-                        try db.create(table: "funktion") { t in
-                            t.autoIncrementedPrimaryKey("id")
-                            t.column("name", .text).notNull()
-                        }
-            // Create relationship "mitglieder"
+            
+            // Create table "kjpPosition"   ---> fertig
+            try db.create(table: "kjpPosition") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("kurzname", .text)
+                t.column("name", .text)
+                    .notNull()
+            }
+            
+            // Create table "veranstaltung"     ---> fertig
+            try db.create(table: "veranstaltung") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("aktiv", .boolean)
+                t.column("titel", .text)
+                t.column("artDerUnterkunft", .text)   // Default = Campingplatz
+                t.column("artDerVerpflegung", .text)    // Default = Selbstversorger, Vollpension, Halbpension
+                t.column("plz", .text)
+                t.column("ort", .text)
+                t.column("laenderCode", .text)
+                    .references("land")             // DE = Deutschland
+                t.column("beginn", .text)
+                t.column("ende", .text)
+                t.column("planMann", .integer)  // geplante Anzahl der zu fördernden Teilnehmer, männlich
+                t.column("planFrau", .integer)  // geplante Anzahl der zu fördernden Teilnehmer, weiblich
+                t.column("istMann", .integer)   // tatsächliche Anzahl der zu fördernden Teilnehmer, männlich
+                t.column("istFrau", .integer)   // tatsächliche Anzahl der zu fördernden Teilnehmer, weiblich
+                t.column("planMitarbeiterMann", .integer)
+                t.column("planMitarbeiterFrau", .integer)
+                t.column("istMitarbeiterMann", .integer)
+                t.column("istMitarbeiterFrau", .integer)
+                t.column("istMitarbeiterDivers", .integer)
+                t.column("kjpPositionId", .integer)
+                    .references("kjpPosition")
+                t.column("leiterId", .integer)
+                    .references("person")
+                t.column("vereinId", .integer)  // Ausrichter oder ausrichtender Verein
+                    .references("verein")
+                t.column("internationaleJugendarbeit", .boolean)
+                t.column("thematischerSchwerpunkt", .integer)       // LSB Erhebungsbogen
+                t.column("durchführungsort", .integer)              // Erhebungsbogen
+                
+            }
+            
+            // Create table "finanzen"
+            try db.create(table: "finanzen") { t in
+                t.autoIncrementedPrimaryKey("id")
+                    .references("veranstaltung", onDelete: .cascade)
+                t.column("ausgabenVerpflegungPlan", .double)
+                t.column("ausgabenVerpflegungIst", .double)
+                t.column("ausgabenUnterkunftPlan", .double)
+                t.column("ausgabenUnterkunftIst", .double)
+                t.column("ausgabenFahrkostenPlan", .double)
+                t.column("ausgabenFahrkostenIst", .double)
+                t.column("ausgabenMaterialPlan", .double)
+                t.column("ausgabenMaterialIst", .double)
+                t.column("ausgabenHonorarkostenPlan", .double)
+                t.column("ausgabenHonorarkostenIst", .double)
+                t.column("ausgabenMietePlan", .double)
+                t.column("ausgabenMieteIst", .double)
+                t.column("ausgabenSonstigeKostenPlan", .double)
+                t.column("ausgabenSonstigeKostenIst", .double)
+                t.column("einnahmenTeilnehmerBeitraegePlan", .double)
+                t.column("einnahmenTeilnehmerBeitraegeIst", .double)
+                t.column("einnahmenSpendePlan", .double)
+                t.column("einnahmenSpendeIst", .double)
+                t.column("einnahmenPfandPlan", .double)
+                t.column("einnahmenPfandIst", .double)
+                t.column("einnahmenSonstigeEinnahmenPlan", .double)
+                t.column("einnahmenSonstigeEinnahmenIst", .double)
+                t.column("einnahmenEigenleistungPlan", .double)
+                t.column("einnahmenEigenleistungIst", .double)
+                t.column("einnahmenZuschussKJPPlan", .double)
+                t.column("einnahmenZuschussKJPIst", .double)
+                t.column("einnahmenSonstigerZuschussPlan", .double)
+                t.column("einnahmenSonstigerZuschussIst", .double)
+                t.column("gesamtKostenPlan", .double)
+                t.column("gesamtKostenIst", .double)
+                t.column("gesamtEinnahmenPlan", .double)
+                t.column("gesamtEinnahmenIst", .double)
+            }
+            
+            // Create table "reisekosten"       ---> fertig
+            try db.create(table: "reisekosten") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("veranstaltungsId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("veranstaltung")
+                t.column("personId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("person", onDelete: .cascade)
+                t.column("reiseVon", .text) // Abfahrtsort
+                t.column("kmFahrer", .integer)
+                t.column("kmPauschaleFahrer", .double)
+                t.column("kmPauschaleMitfahrer", .double)
+                t.column("kmVorOrt", .integer)
+                t.column("vorschuss", .double)
+            }
+            
+            // Create table "funktion"      ---> fertig
+            try db.create(table: "funktion") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("name", .text).notNull()       // z.B. Jugendleiter oder Wanderwart, ...
+            }
+            
+            // Create relationship "mitglieder"     ---> fertig
             try db.create(table: "mitglied") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("personId", .integer)
@@ -90,18 +207,45 @@ struct AppDatabase {
                     .notNull()
                     .indexed()
                     .references("verein", onDelete: .setNull)
-                t.column("funktionId", .integer)
+                t.column("funktionId", .integer)        // Funktion im Verein
                     .notNull()
                     .indexed()
                     .references("funktion", onDelete: .setNull)
-            } 
+            }
+            
+            // Create relationship "mitfahrer"      ---> fertig
+            try db.create(table: "mitfahrer") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("personId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("person", onDelete: .cascade)
+                t.column("reisekostenId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("reisekosten")
+                t.column("kmMitfahrer", .integer)
+            }
+            
+            // Create relationship "teilnahme"
+            try db.create(table: "teilnahme") { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("personId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("person", onDelete: .cascade)
+                t.column("veranstaltungsId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("veranstaltung")
+                t.column("funktionId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references("funktion")     // Funktion während der Veranstaltung
+                t.column("beitrag", .double)    // Teilnehmer-Beitrag
+                t.column("ermaessigung", .double)   //
+            }
         }
-        
-        // Migrations for future application versions will be inserted here:
-        // migrator.registerMigration(...) { db in
-        //     ...
-        // }
-        
         return migrator
     }
 }

@@ -20,7 +20,7 @@ struct AppView: View {
     var body: some View {
         NavigationView {
             PersonList(persons: persons)
-                .navigationBarTitle(Text("Mitglieder"))
+                //.navigationBarTitle(Text("Mitglieder"))
                 .navigationBarItems(
                     leading: HStack {
                         EditButton()
@@ -35,6 +35,7 @@ struct AppView: View {
                 }
                 .environment(\.editMode, $editMode)
         }.navigationViewStyle(StackNavigationViewStyle())
+            .navigationTitle("Mitglieder")
     }
     
     private var toolbarContent: some ToolbarContent {

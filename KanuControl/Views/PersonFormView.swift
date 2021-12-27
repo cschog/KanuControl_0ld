@@ -26,7 +26,7 @@ struct PersonFormView: View {
                     .accessibility(label: Text("Ort"))
             }
             Group {
-                TextField("Telefon Festnetzt", text: $form.telefonFestnetz)
+                TextField("Telefon Festnetz", text: $form.telefonFestnetz)
                     .keyboardType(.phonePad)
                     .accessibility(label: Text("Telefon Festnetz"))
                 TextField("Telefon Mobil", text: $form.telefonMobil)
@@ -45,7 +45,7 @@ struct PersonFormView: View {
                     .accessibility(label: Text("BIC"))
             }
         }
-        .listStyle(InsetGroupedListStyle())
+        //.listStyle(InsetGroupedListStyle())
     }
 }
 
