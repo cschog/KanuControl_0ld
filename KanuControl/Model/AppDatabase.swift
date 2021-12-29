@@ -51,7 +51,6 @@ struct AppDatabase {
                 t.column("vorname", .text).notNull()
                 t.column("geburtstag", .text)
                 t.column("sex", .text)
-                t.column("avatar", .blob)
                 t.column("strasse", .text)
                 t.column("plz", .text)
                 t.column("ort", .text)
@@ -88,7 +87,6 @@ struct AppDatabase {
                 t.column("iban", .text)
                 t.column("bic", .text)
                 t.column("rechtsform", .text)   // gemeinnütziger Verein, ... (später eigene Tabelle)
-                t.column("logo", .blob)
             }
             
             // Create table "kjpPosition"   ---> fertig
@@ -265,8 +263,8 @@ extension AppDatabase {
             }
         }
     }
-    
-    /// Saves (inserts or updates) a player. When the method returns, the
+// -------- Person -----------
+    /// Saves (inserts or updates) a person. When the method returns, the
     /// person is present in the database, and its id is not nil.
     func savePerson(_ person: inout Person) throws {
         if person.name.isEmpty {
@@ -274,7 +272,7 @@ extension AppDatabase {
         }
         try dbWriter.write { db in
             person.nameGesamt = person.name + ", " + person.vorname
-            
+
             // Create Date
             let date = Date()
 
@@ -286,24 +284,52 @@ extension AppDatabase {
 
             // Convert Date to String
             // dateFormatter.string(from: date)
-            
+
             person.status = true
             person.statusDatum = dateFormatter.string(from: date)
             try person.save(db)
         }
     }
-    
+
     /// Delete the specified person
     func deletePerson(ids: [Int64]) throws {
         try dbWriter.write { db in
             _ = try Person.deleteAll(db, ids: ids)
         }
     }
-    
+
     /// Delete all Persons
     func deleteAllPersons() throws {
         try dbWriter.write { db in
             _ = try Person.deleteAll(db)
+        }
+    }
+    
+// ---------- Verein -------------------
+    
+    /// Saves (inserts or updates) a verein. When the method returns, the
+    /// verein is present in the database, and its id is not nil.
+    func saveVerein(_ verein: inout Verein) throws {
+        if verein.name.isEmpty {
+            throw ValidationError.missingName
+        }
+        try dbWriter.write { db in
+
+            try verein.save(db)
+        }
+    }
+
+    /// Delete the specified verein
+    func deleteVerein(ids: [Int64]) throws {
+        try dbWriter.write { db in
+            _ = try Verein.deleteAll(db, ids: ids)
+        }
+    }
+
+    /// Delete all Vereine
+    func deleteAllVereine() throws {
+        try dbWriter.write { db in
+            _ = try Verein.deleteAll(db)
         }
     }
 }

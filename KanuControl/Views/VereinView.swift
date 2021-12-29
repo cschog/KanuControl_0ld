@@ -1,41 +1,48 @@
+//
+//  VereinView.swift
+//  KanuControl
+//
+//  Created by Christoph Schog on 28.12.21.
+//
+
 import GRDBQuery
 import SwiftUI
 
-/// The main application view
-struct AppView: View {
+/// The Verein view
+struct VereinView: View {
     /// Write access to the database
     @Environment(\.appDatabase) private var appDatabase
     
-    /// The `players` property is automatically updated when the database changes
-    @Query(PersonRequest(ordering: .byName)) private var persons: [Person]
+    /// The `Verein` property is automatically updated when the database changes
+    @Query(VereinRequest(ordering: .byName)) private var vereine: [Verein]
     
     /// We'll need to leave edit mode in several occasions.
     @State private var editMode = EditMode.inactive
     
     /// Tracks the presentation of the player creation sheet.
-    @State private var newUserIsPresented = false
+    @State private var newVereinIsPresented = false
     
     @State private var showingAlert = false
     
     var body: some View {
         NavigationView {
-            PersonList(persons: persons)
-                //.navigationBarTitle(Text("Mitglieder"))
+            VereinList(vereine: vereine)
+                //.navigationBarTitle(Text("Vereine"))
                 .navigationBarItems(
                     leading: HStack {
                         EditButton()
-                        newPersonButton
+                        newVereinButton
                     }
                 )
                 .toolbar { toolbarContent }
-                .onChange(of: persons) { persons in
-                    if persons.isEmpty {
+                .onChange(of: vereine) { vereine in
+                    if vereine.isEmpty {
                         stopEditing()
                     }
                 }
                 .environment(\.editMode, $editMode)
         }.navigationViewStyle(StackNavigationViewStyle())
-            .navigationTitle("Mitglieder")
+            .navigationTitle("Vereine")
     }
     
     private var toolbarContent: some ToolbarContent {
@@ -44,30 +51,30 @@ struct AppView: View {
 
             Button {
                 // Don't stopEditing() here because this is
-                // performed `onChange(of: players)`
+                // performed `onChange(of: vereine)`
                 showingAlert.toggle()
             } label: {
                 Image(systemName: "trash").imageScale(.large)
             }
             .alert("Wirklich alles löschen?", isPresented: $showingAlert) {
-                Button("OK", role: nil, action: {try! appDatabase.deleteAllPersons()})
+                Button("OK", role: nil, action: {try! appDatabase.deleteAllVereine()})
                 Button("Cancel", role: .cancel, action: {})}
             
             Spacer()
         }
     }
     
-    /// The button that presents the person creation sheet.
-    private var newPersonButton: some View {
+    /// The button that presents the verein creation sheet.
+    private var newVereinButton: some View {
         Button {
             stopEditing()
-            newUserIsPresented = true
+            newVereinIsPresented = true
         } label: {
             Image(systemName: "plus")
         }
-        .accessibility(label: Text("Neues Mitglied"))
-        .sheet(isPresented: $newUserIsPresented) {
-            PersonCreationView()
+        .accessibility(label: Text("Neuer Verein"))
+        .sheet(isPresented: $newVereinIsPresented) {
+            VereinCreationView()
         }
     }
 
@@ -80,12 +87,13 @@ struct AppView: View {
 }
 
 
-struct AppView_Previews: PreviewProvider {
+struct VereinView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             // Preview the default, empty database
-            AppView()
+            VereinView()
 
         }
     }
 }
+

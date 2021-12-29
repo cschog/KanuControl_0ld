@@ -12,18 +12,24 @@ struct PersonFormView: View {
                     .accessibility(label: Text("Person Name"))
                 TextField("Vorname", text: $form.vorname)
                     .accessibility(label: Text("Vorname"))
-                TextField("Geburtstag", text: $form.geburtstag)
-                    .accessibility(label: Text("Geburtstag"))
-                    .keyboardType(.numbersAndPunctuation)
-                TextField("Geschlecht", text: $form.sex)
-                    .accessibility(label: Text("Geschlecht"))
-                    .keyboardType(.alphabet)
+                HStack {
+                    TextField("Geburtstag", text: $form.geburtstag)
+                       .accessibility(label: Text("Geburtstag"))
+                       .keyboardType(.numbersAndPunctuation)
+                   TextField("Geschlecht", text: $form.sex)
+                       .accessibility(label: Text("Geschlecht"))
+                       .keyboardType(.alphabet)
+                }
+               
                 TextField("Strasse", text: $form.strasse)
                     .accessibility(label: Text("Strasse"))
-                TextField("PLZ", text: $form.plz)
-                    .accessibility(label: Text("PLZ"))
-                TextField("Ort", text: $form.ort)
-                    .accessibility(label: Text("Ort"))
+                HStack {
+                    TextField("PLZ", text: $form.plz)
+                        .accessibility(label: Text("PLZ"))
+                    TextField("Ort", text: $form.ort)
+                        .accessibility(label: Text("Ort"))
+                }
+                
             }
             Group {
                 TextField("Telefon Festnetz", text: $form.telefonFestnetz)

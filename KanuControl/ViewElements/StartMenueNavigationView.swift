@@ -13,10 +13,10 @@ struct StartMenueNavigationView: View {
     
     var body: some View {
         Group {
-            NavigationLink(destination: AppView().environment(\.appDatabase, .shared), tag: "Mitglieder", selection: $selection)
+            NavigationLink(destination: PersonView().environment(\.appDatabase, .shared), tag: "Mitglieder", selection: $selection)
             { EmptyView() }
             
-            NavigationLink(destination: Text("Vereine"), tag: "Vereine", selection: $selection)
+            NavigationLink(destination: VereinView().environment(\.appDatabase, .shared), tag: "Vereine", selection: $selection)
             { EmptyView() }
             
             NavigationLink(destination: Text("Veranstaltung"), tag: "Veranstaltung", selection: $selection)

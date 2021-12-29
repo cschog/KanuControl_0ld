@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		837CA0E4277A458D00990757 /* Verein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0E3277A458D00990757 /* Verein.swift */; };
+		837CA0E6277B690100990757 /* VereinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0E5277B690100990757 /* VereinRequest.swift */; };
+		837CA0EB277B734B00990757 /* VereinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0EA277B734B00990757 /* VereinView.swift */; };
+		837CA0ED277B75FF00990757 /* VereinList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0EC277B75FF00990757 /* VereinList.swift */; };
+		837CA0EF277B77F300990757 /* VereinEditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0EE277B77F300990757 /* VereinEditionView.swift */; };
+		837CA0F1277B794600990757 /* VereinFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0F0277B794600990757 /* VereinFormView.swift */; };
+		837CA0F3277B81C300990757 /* VereinCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0F2277B81C300990757 /* VereinCreationView.swift */; };
 		8384F9A0276F9D010079F14A /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 8384F99F276F9D010079F14A /* GRDB */; };
 		8384F9A3276F9D130079F14A /* GRDBQuery in Frameworks */ = {isa = PBXBuildFile; productRef = 8384F9A2276F9D130079F14A /* GRDBQuery */; };
 		8384F9A8276F9D300079F14A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9A4276F9D300079F14A /* Persistence.swift */; };
@@ -15,7 +22,7 @@
 		8384F9AB276F9D300079F14A /* PersonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9A7276F9D300079F14A /* PersonRequest.swift */; };
 		8384F9B3276F9D470079F14A /* PersonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9AC276F9D470079F14A /* PersonFormView.swift */; };
 		8384F9B5276F9D470079F14A /* PersonCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9AE276F9D470079F14A /* PersonCreationView.swift */; };
-		8384F9B6276F9D470079F14A /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9AF276F9D470079F14A /* AppView.swift */; };
+		8384F9B6276F9D470079F14A /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9AF276F9D470079F14A /* PersonView.swift */; };
 		8384F9B7276F9D470079F14A /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9B0276F9D470079F14A /* PersonList.swift */; };
 		8384F9BB276FA60B0079F14A /* PersonEditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9BA276FA60B0079F14A /* PersonEditionView.swift */; };
 		83A3CB5A2779FC8400C0A994 /* StammdatenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3CB592779FC8400C0A994 /* StammdatenView.swift */; };
@@ -29,13 +36,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		837CA0E3277A458D00990757 /* Verein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verein.swift; sourceTree = "<group>"; };
+		837CA0E5277B690100990757 /* VereinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinRequest.swift; sourceTree = "<group>"; };
+		837CA0EA277B734B00990757 /* VereinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinView.swift; sourceTree = "<group>"; };
+		837CA0EC277B75FF00990757 /* VereinList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinList.swift; sourceTree = "<group>"; };
+		837CA0EE277B77F300990757 /* VereinEditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinEditionView.swift; sourceTree = "<group>"; };
+		837CA0F0277B794600990757 /* VereinFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinFormView.swift; sourceTree = "<group>"; };
+		837CA0F2277B81C300990757 /* VereinCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinCreationView.swift; sourceTree = "<group>"; };
 		8384F9A4276F9D300079F14A /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8384F9A5276F9D300079F14A /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8384F9A6276F9D300079F14A /* AppDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		8384F9A7276F9D300079F14A /* PersonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonRequest.swift; sourceTree = "<group>"; };
 		8384F9AC276F9D470079F14A /* PersonFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonFormView.swift; sourceTree = "<group>"; };
 		8384F9AE276F9D470079F14A /* PersonCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCreationView.swift; sourceTree = "<group>"; };
-		8384F9AF276F9D470079F14A /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		8384F9AF276F9D470079F14A /* PersonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		8384F9B0276F9D470079F14A /* PersonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
 		8384F9BA276FA60B0079F14A /* PersonEditionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditionView.swift; sourceTree = "<group>"; };
 		83A3CB592779FC8400C0A994 /* StammdatenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StammdatenView.swift; sourceTree = "<group>"; };
@@ -114,6 +128,8 @@
 				8384F9A4276F9D300079F14A /* Persistence.swift */,
 				8384F9A5276F9D300079F14A /* Person.swift */,
 				8384F9A7276F9D300079F14A /* PersonRequest.swift */,
+				837CA0E3277A458D00990757 /* Verein.swift */,
+				837CA0E5277B690100990757 /* VereinRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,11 +138,16 @@
 			isa = PBXGroup;
 			children = (
 				8384F9BA276FA60B0079F14A /* PersonEditionView.swift */,
-				8384F9AF276F9D470079F14A /* AppView.swift */,
+				8384F9AF276F9D470079F14A /* PersonView.swift */,
 				8384F9AE276F9D470079F14A /* PersonCreationView.swift */,
 				8384F9AC276F9D470079F14A /* PersonFormView.swift */,
 				8384F9B0276F9D470079F14A /* PersonList.swift */,
 				83C2740A27777B0C00894286 /* StartMenue.swift */,
+				837CA0EA277B734B00990757 /* VereinView.swift */,
+				837CA0EC277B75FF00990757 /* VereinList.swift */,
+				837CA0EE277B77F300990757 /* VereinEditionView.swift */,
+				837CA0F0277B794600990757 /* VereinFormView.swift */,
+				837CA0F2277B81C300990757 /* VereinCreationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,20 +242,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				837CA0F3277B81C300990757 /* VereinCreationView.swift in Sources */,
+				837CA0ED277B75FF00990757 /* VereinList.swift in Sources */,
+				837CA0E6277B690100990757 /* VereinRequest.swift in Sources */,
 				83A3CB5C2779FD7200C0A994 /* VeranstaltungsdatenView.swift in Sources */,
 				8384F9B7276F9D470079F14A /* PersonList.swift in Sources */,
 				8384F9B5276F9D470079F14A /* PersonCreationView.swift in Sources */,
 				83A4C2B8276F9BC700C705DF /* KanuControlApp.swift in Sources */,
 				8384F9BB276FA60B0079F14A /* PersonEditionView.swift in Sources */,
-				8384F9B6276F9D470079F14A /* AppView.swift in Sources */,
+				8384F9B6276F9D470079F14A /* PersonView.swift in Sources */,
 				83C2740B27777B0C00894286 /* StartMenue.swift in Sources */,
+				837CA0E4277A458D00990757 /* Verein.swift in Sources */,
 				8384F9B3276F9D470079F14A /* PersonFormView.swift in Sources */,
 				83A3CB5A2779FC8400C0A994 /* StammdatenView.swift in Sources */,
 				8384F9A8276F9D300079F14A /* Persistence.swift in Sources */,
+				837CA0EB277B734B00990757 /* VereinView.swift in Sources */,
 				83C2740E2779F6C800894286 /* StartMenueNavigationView.swift in Sources */,
 				8384F9AA276F9D300079F14A /* AppDatabase.swift in Sources */,
+				837CA0EF277B77F300990757 /* VereinEditionView.swift in Sources */,
 				8384F9AB276F9D300079F14A /* PersonRequest.swift in Sources */,
 				8384F9A9276F9D300079F14A /* Person.swift in Sources */,
+				837CA0F1277B794600990757 /* VereinFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
