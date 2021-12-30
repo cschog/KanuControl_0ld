@@ -13,6 +13,7 @@ Currently I use an example of GRDB by Gwendal Roué. Thanks a lot for that.
 Translated with www.DeepL.com/Translator (free version)
 
 ------------ German -----------
+
 KanuControl ist eine Anwendung, um die Bearbeitung von Zuschuss-Anträgen beim LSB NRW zu erleichtern. 
 
 Die neue Version basiert auf einer C# App, die mit SQL CE und ClickOnce unter Visual Studio entwickelt wurde. 
