@@ -12,7 +12,7 @@ import SwiftUI
 struct KanuControl: App {
     var body: some Scene {
         WindowGroup {
-            StartMenue()
+            StartMenu2().environment(\.appDatabase, .shared)
             //AppView().environment(\.appDatabase, .shared)
         }
     }

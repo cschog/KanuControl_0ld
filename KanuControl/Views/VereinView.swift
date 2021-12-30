@@ -24,24 +24,33 @@ struct VereinView: View {
     
     @State private var showingAlert = false
     
+    @Binding var showModal: Bool
+    
     var body: some View {
         NavigationView {
-            VereinList(vereine: vereine)
-                //.navigationBarTitle(Text("Vereine"))
-                .navigationBarItems(
-                    leading: HStack {
-                        EditButton()
-                        newVereinButton
-                    }
-                )
-                .toolbar { toolbarContent }
-                .onChange(of: vereine) { vereine in
-                    if vereine.isEmpty {
-                        stopEditing()
-                    }
-                }
-                .environment(\.editMode, $editMode)
-        }.navigationViewStyle(StackNavigationViewStyle())
+            VStack {
+                Text("Vereine")
+                    .bold()
+                    .font(.largeTitle)
+                VereinList(vereine: vereine)
+                             //.navigationBarTitle(Text("Vereine"))
+                             .navigationBarItems(
+                                 leading: HStack {
+                                     dismissViewButton
+                                     EditButton()
+                                     newVereinButton
+                                 }
+                             )
+                             .toolbar { toolbarContent }
+                             .onChange(of: vereine) { vereine in
+                                 if vereine.isEmpty {
+                                     stopEditing()
+                                 }
+                             }
+                             .environment(\.editMode, $editMode)
+                     }.navigationViewStyle(StackNavigationViewStyle())
+            }
+         
             .navigationTitle("Vereine")
     }
     
@@ -77,6 +86,14 @@ struct VereinView: View {
             VereinCreationView()
         }
     }
+    
+    /// Button to dismiss the view
+    private var dismissViewButton: some View {
+        
+        Button("Zurück") {
+            self.showModal.toggle()
+        }
+    }
 
     
     private func stopEditing() {
@@ -87,13 +104,15 @@ struct VereinView: View {
 }
 
 
-struct VereinView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            // Preview the default, empty database
-            VereinView()
-
-        }
-    }
-}
+//struct VereinView_Previews: PreviewProvider {
+//    @Binding var showModal: Bool
+//
+//    static var previews: some View {
+//        Group {
+//            // Preview the default, empty database
+//            VereinView(showModal: $showModul)
+//
+//        }
+//    }
+//}
 

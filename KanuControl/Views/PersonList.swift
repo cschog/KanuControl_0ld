@@ -28,7 +28,7 @@ struct PersonList: View {
     
     /// The view that edits a player in the list.
     private func editionView(for person: Person) -> some View {
-        PersonEditionView(person: person).navigationBarTitle(person.name)
+        PersonEditionView(person: person).navigationBarTitle(person.nameGesamt)
     }
 }
 

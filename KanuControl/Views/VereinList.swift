@@ -35,7 +35,8 @@ struct VereinList: View {
     
     /// The view that edits a player in the list.
     private func editionView(for verein: Verein) -> some View {
-        VereinEditionView(verein: verein) //.navigationBarTitle(verein.name)
+        VereinEditionView(verein: verein)
+            .navigationBarTitle(verein.name)
     }
 }
 

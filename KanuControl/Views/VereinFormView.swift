@@ -42,6 +42,7 @@ struct VereinFormView: View {
                     .accessibility(label: Text("Homepage"))
                     .keyboardType(.webSearch)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
                 TextField("bank", text: $form.bank)
                     .accessibility(label: Text("Bank"))
                 TextField("Kontoinhaber", text: $form.kontoinhaber)

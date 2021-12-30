@@ -25,13 +25,15 @@
 		8384F9B6276F9D470079F14A /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9AF276F9D470079F14A /* PersonView.swift */; };
 		8384F9B7276F9D470079F14A /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9B0276F9D470079F14A /* PersonList.swift */; };
 		8384F9BB276FA60B0079F14A /* PersonEditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384F9BA276FA60B0079F14A /* PersonEditionView.swift */; };
+		83A3A3BF277D919A007643A2 /* StartMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3A3BE277D919A007643A2 /* StartMenu2.swift */; };
+		83A3A3C3277D9379007643A2 /* logoKanuControl100px.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3A3C0277D9379007643A2 /* logoKanuControl100px.png */; };
+		83A3A3C4277D9379007643A2 /* logoKanuControl50px.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3A3C1277D9379007643A2 /* logoKanuControl50px.png */; };
+		83A3A3C5277D9379007643A2 /* logoKanuControl200px.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3A3C2277D9379007643A2 /* logoKanuControl200px.png */; };
 		83A3CB5A2779FC8400C0A994 /* StammdatenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3CB592779FC8400C0A994 /* StammdatenView.swift */; };
 		83A3CB5C2779FD7200C0A994 /* VeranstaltungsdatenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3CB5B2779FD7200C0A994 /* VeranstaltungsdatenView.swift */; };
 		83A4C2B8276F9BC700C705DF /* KanuControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C2B7276F9BC700C705DF /* KanuControlApp.swift */; };
 		83A4C2BC276F9BC800C705DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BB276F9BC800C705DF /* Assets.xcassets */; };
 		83A4C2BF276F9BC800C705DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A4C2BE276F9BC800C705DF /* Preview Assets.xcassets */; };
-		83C2740B27777B0C00894286 /* StartMenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C2740A27777B0C00894286 /* StartMenue.swift */; };
-		83C2740E2779F6C800894286 /* StartMenueNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C2740D2779F6C800894286 /* StartMenueNavigationView.swift */; };
 		83E75C1B2771F11100177DBF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = 83E75C1A2771F11100177DBF /* SSToastMessage */; };
 /* End PBXBuildFile section */
 
@@ -52,14 +54,16 @@
 		8384F9AF276F9D470079F14A /* PersonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		8384F9B0276F9D470079F14A /* PersonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
 		8384F9BA276FA60B0079F14A /* PersonEditionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditionView.swift; sourceTree = "<group>"; };
+		83A3A3BE277D919A007643A2 /* StartMenu2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu2.swift; sourceTree = "<group>"; };
+		83A3A3C0277D9379007643A2 /* logoKanuControl100px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoKanuControl100px.png; path = KanuControl/Assets/logoKanuControl100px.png; sourceTree = SOURCE_ROOT; };
+		83A3A3C1277D9379007643A2 /* logoKanuControl50px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoKanuControl50px.png; path = KanuControl/Assets/logoKanuControl50px.png; sourceTree = SOURCE_ROOT; };
+		83A3A3C2277D9379007643A2 /* logoKanuControl200px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoKanuControl200px.png; path = KanuControl/Assets/logoKanuControl200px.png; sourceTree = SOURCE_ROOT; };
 		83A3CB592779FC8400C0A994 /* StammdatenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StammdatenView.swift; sourceTree = "<group>"; };
 		83A3CB5B2779FD7200C0A994 /* VeranstaltungsdatenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeranstaltungsdatenView.swift; sourceTree = "<group>"; };
 		83A4C2B4276F9BC700C705DF /* KanuControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanuControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A4C2B7276F9BC700C705DF /* KanuControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanuControlApp.swift; sourceTree = "<group>"; };
 		83A4C2BB276F9BC800C705DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83A4C2BE276F9BC800C705DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		83C2740A27777B0C00894286 /* StartMenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenue.swift; sourceTree = "<group>"; };
-		83C2740D2779F6C800894286 /* StartMenueNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenueNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83A3A3C6277D939C007643A2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				83A4C2BB276F9BC800C705DF /* Assets.xcassets */,
+				83A3A3C1277D9379007643A2 /* logoKanuControl50px.png */,
+				83A3A3C0277D9379007643A2 /* logoKanuControl100px.png */,
+				83A3A3C2277D9379007643A2 /* logoKanuControl200px.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		83A4C2AB276F9BC700C705DF = {
 			isa = PBXGroup;
 			children = (
@@ -95,11 +110,11 @@
 		83A4C2B6276F9BC700C705DF /* KanuControl */ = {
 			isa = PBXGroup;
 			children = (
+				83A3A3C6277D939C007643A2 /* Assets */,
 				83A4C2C5276F9BDA00C705DF /* Main */,
 				83A4C2C6276F9BE400C705DF /* Model */,
 				83A4C2C7276F9BEC00C705DF /* Views */,
 				83C2740C2779F66200894286 /* ViewElements */,
-				83A4C2BB276F9BC800C705DF /* Assets.xcassets */,
 				83A4C2BD276F9BC800C705DF /* Preview Content */,
 			);
 			path = KanuControl;
@@ -142,12 +157,12 @@
 				8384F9AE276F9D470079F14A /* PersonCreationView.swift */,
 				8384F9AC276F9D470079F14A /* PersonFormView.swift */,
 				8384F9B0276F9D470079F14A /* PersonList.swift */,
-				83C2740A27777B0C00894286 /* StartMenue.swift */,
 				837CA0EA277B734B00990757 /* VereinView.swift */,
 				837CA0EC277B75FF00990757 /* VereinList.swift */,
 				837CA0EE277B77F300990757 /* VereinEditionView.swift */,
 				837CA0F0277B794600990757 /* VereinFormView.swift */,
 				837CA0F2277B81C300990757 /* VereinCreationView.swift */,
+				83A3A3BE277D919A007643A2 /* StartMenu2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,7 +170,6 @@
 		83C2740C2779F66200894286 /* ViewElements */ = {
 			isa = PBXGroup;
 			children = (
-				83C2740D2779F6C800894286 /* StartMenueNavigationView.swift */,
 				83A3CB592779FC8400C0A994 /* StammdatenView.swift */,
 				83A3CB5B2779FD7200C0A994 /* VeranstaltungsdatenView.swift */,
 			);
@@ -230,8 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A3A3C4277D9379007643A2 /* logoKanuControl50px.png in Resources */,
 				83A4C2BF276F9BC800C705DF /* Preview Assets.xcassets in Resources */,
 				83A4C2BC276F9BC800C705DF /* Assets.xcassets in Resources */,
+				83A3A3C3277D9379007643A2 /* logoKanuControl100px.png in Resources */,
+				83A3A3C5277D9379007643A2 /* logoKanuControl200px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,14 +267,13 @@
 				8384F9B5276F9D470079F14A /* PersonCreationView.swift in Sources */,
 				83A4C2B8276F9BC700C705DF /* KanuControlApp.swift in Sources */,
 				8384F9BB276FA60B0079F14A /* PersonEditionView.swift in Sources */,
+				83A3A3BF277D919A007643A2 /* StartMenu2.swift in Sources */,
 				8384F9B6276F9D470079F14A /* PersonView.swift in Sources */,
-				83C2740B27777B0C00894286 /* StartMenue.swift in Sources */,
 				837CA0E4277A458D00990757 /* Verein.swift in Sources */,
 				8384F9B3276F9D470079F14A /* PersonFormView.swift in Sources */,
 				83A3CB5A2779FC8400C0A994 /* StammdatenView.swift in Sources */,
 				8384F9A8276F9D300079F14A /* Persistence.swift in Sources */,
 				837CA0EB277B734B00990757 /* VereinView.swift in Sources */,
-				83C2740E2779F6C800894286 /* StartMenueNavigationView.swift in Sources */,
 				8384F9AA276F9D300079F14A /* AppDatabase.swift in Sources */,
 				837CA0EF277B77F300990757 /* VereinEditionView.swift in Sources */,
 				8384F9AB276F9D300079F14A /* PersonRequest.swift in Sources */,
@@ -320,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -375,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -399,6 +415,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -428,6 +445,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

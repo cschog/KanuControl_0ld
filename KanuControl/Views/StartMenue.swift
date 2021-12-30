@@ -27,12 +27,12 @@ struct StartMenue: View {
                 StartMenueNavigationView(selection: $selection)
                 
                 // Stammdaten Mitglieder und Vereine
-                StammdatenView(selection: $selection)
+                StammdatenView()
 
                 Divider()
                 
                 // Veranstaltungsdaten: Veranstaltungen und Teilnehmer
-                VeranstaltungsdatenView(selection: $selection)
+                //VeranstaltungsdatenView(selection: $selection)
                 
                 Spacer()
             }

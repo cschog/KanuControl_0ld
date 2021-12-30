@@ -6,6 +6,8 @@ struct PersonView: View {
     /// Write access to the database
     @Environment(\.appDatabase) private var appDatabase
     
+    @Environment(\.presentationMode) var presentationMode
+    
     /// The `Person` property is automatically updated when the database changes
     @Query(PersonRequest(ordering: .byName)) private var persons: [Person]
     
@@ -17,23 +19,36 @@ struct PersonView: View {
     
     @State private var showingAlert = false
     
+    @State private var isShowSheet: Bool = false
+    
+    @Binding var showModal: Bool
+
     var body: some View {
         NavigationView {
-            PersonList(persons: persons)
-                //.navigationBarTitle(Text("Mitglieder"))
-                .navigationBarItems(
-                    leading: HStack {
-                        EditButton()
-                        newPersonButton
+            VStack{
+                Text("Mitglieder")
+                    .bold()
+                    .font(.largeTitle)
+                PersonList(persons: persons)
+                    //.navigationBarTitle(Text("Mitglieder"))
+                    .navigationBarItems(
+                        leading: HStack {
+                            dismissViewButton
+                            EditButton()
+                            newPersonButton
+                            Spacer()
+                            
+                        }
+                    )
+                    .toolbar { toolbarContent }
+                    .onChange(of: persons) { persons in
+                        if persons.isEmpty {
+                            stopEditing()
+                        }
                     }
-                )
-                .toolbar { toolbarContent }
-                .onChange(of: persons) { persons in
-                    if persons.isEmpty {
-                        stopEditing()
-                    }
-                }
-                .environment(\.editMode, $editMode)
+                    .environment(\.editMode, $editMode)
+            }
+
         }.navigationViewStyle(StackNavigationViewStyle())
             .navigationTitle("Mitglieder")
     }
@@ -70,6 +85,14 @@ struct PersonView: View {
             PersonCreationView()
         }
     }
+    
+    /// Button to dismiss the view
+    private var dismissViewButton: some View {
+        
+        Button("Zurück") {
+            self.showModal.toggle()
+        }
+    }
 
     
     private func stopEditing() {
@@ -80,12 +103,14 @@ struct PersonView: View {
 }
 
 
-struct PersonView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            // Preview the default, empty database
-            PersonView()
-
-        }
-    }
-}
+//struct PersonView_Previews: PreviewProvider {
+//    @Binding var showModal: Bool
+//    
+//    static var previews: some View {
+//        Group {
+//            // Preview the default, empty database
+//            PersonView(showModal: $showModal)
+//
+//        }
+//    }
+//}

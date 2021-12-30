@@ -49,7 +49,7 @@ struct VereinCreationView: View {
                     } label: {
                         Text("Speichern")
                     })
-        }
+       }
     }
     
     private func save() {

@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct StammdatenView: View {
-    @Binding var selection: String?
+    //@Binding var selection: String?
+    @State var showLoginView: Bool = false
     
     var body: some View {
         HStack {
-            Button("Mitglieder") {
-                self.selection = "Mitglieder"
+                Button("Mitglieder") {
+                      self.showLoginView = true
+                  }
+                  .padding()
+                  .frame(minWidth: 140)
+                  .border(Color.black, width: 2)
+            
+                Button("Vereine") {
+                    self.showLoginView = true
+                }
+                .padding()
+                .frame(minWidth: 140)
+                .border(Color.black, width: 2)
             }
-            .padding()
-            .frame(minWidth: 140)
-            .border(Color.black, width: 2)
-        
-            Button("Vereine") {
-                self.selection = "Vereine"
-            }
-            .padding()
-            .frame(minWidth: 140)
-            .border(Color.black, width: 2)
-        }
+            
+       }
 
     }
-}
