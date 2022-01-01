@@ -14,12 +14,12 @@ struct PersonView: View {
     /// We'll need to leave edit mode in several occasions.
     @State private var editMode = EditMode.inactive
     
-    /// Tracks the presentation of the player creation sheet.
+    /// Tracks the presentation of the person creation sheet.
     @State private var newUserIsPresented = false
     
     @State private var showingAlert = false
     
-    @State private var isShowSheet: Bool = false
+    // @State private var isShowSheet: Bool = false
     
     @Binding var showModal: Bool
 
@@ -40,7 +40,7 @@ struct PersonView: View {
                             
                         }
                     )
-                    .toolbar { toolbarContent }
+                   // .toolbar { toolbarContent }       // Möglichkeit alle Personen zu löschen
                     .onChange(of: persons) { persons in
                         if persons.isEmpty {
                             stopEditing()
@@ -105,7 +105,7 @@ struct PersonView: View {
 
 //struct PersonView_Previews: PreviewProvider {
 //    @Binding var showModal: Bool
-//    
+//
 //    static var previews: some View {
 //        Group {
 //            // Preview the default, empty database

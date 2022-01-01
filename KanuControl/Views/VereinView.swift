@@ -41,7 +41,7 @@ struct VereinView: View {
                                      newVereinButton
                                  }
                              )
-                             .toolbar { toolbarContent }
+                            // .toolbar { toolbarContent }  // Möglichkeit alle Vereine zu löschen
                              .onChange(of: vereine) { vereine in
                                  if vereine.isEmpty {
                                      stopEditing()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8346A21E277F16CB00E043A8 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8346A21D277F16CB00E043A8 /* Test.swift */; };
+		8346A220277F3D9000E043A8 /* Mitglied.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8346A21F277F3D9000E043A8 /* Mitglied.swift */; };
 		837CA0E4277A458D00990757 /* Verein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0E3277A458D00990757 /* Verein.swift */; };
 		837CA0E6277B690100990757 /* VereinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0E5277B690100990757 /* VereinRequest.swift */; };
 		837CA0EB277B734B00990757 /* VereinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CA0EA277B734B00990757 /* VereinView.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8346A21D277F16CB00E043A8 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		8346A21F277F3D9000E043A8 /* Mitglied.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mitglied.swift; sourceTree = "<group>"; };
 		837CA0E3277A458D00990757 /* Verein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verein.swift; sourceTree = "<group>"; };
 		837CA0E5277B690100990757 /* VereinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinRequest.swift; sourceTree = "<group>"; };
 		837CA0EA277B734B00990757 /* VereinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VereinView.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				8384F9A7276F9D300079F14A /* PersonRequest.swift */,
 				837CA0E3277A458D00990757 /* Verein.swift */,
 				837CA0E5277B690100990757 /* VereinRequest.swift */,
+				8346A21F277F3D9000E043A8 /* Mitglied.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				837CA0F0277B794600990757 /* VereinFormView.swift */,
 				837CA0F2277B81C300990757 /* VereinCreationView.swift */,
 				83A3A3BE277D919A007643A2 /* StartMenu2.swift */,
+				8346A21D277F16CB00E043A8 /* Test.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				837CA0ED277B75FF00990757 /* VereinList.swift in Sources */,
 				837CA0E6277B690100990757 /* VereinRequest.swift in Sources */,
 				83A3CB5C2779FD7200C0A994 /* VeranstaltungsdatenView.swift in Sources */,
+				8346A220277F3D9000E043A8 /* Mitglied.swift in Sources */,
 				8384F9B7276F9D470079F14A /* PersonList.swift in Sources */,
 				8384F9B5276F9D470079F14A /* PersonCreationView.swift in Sources */,
 				83A4C2B8276F9BC700C705DF /* KanuControlApp.swift in Sources */,
@@ -276,6 +283,7 @@
 				837CA0EB277B734B00990757 /* VereinView.swift in Sources */,
 				8384F9AA276F9D300079F14A /* AppDatabase.swift in Sources */,
 				837CA0EF277B77F300990757 /* VereinEditionView.swift in Sources */,
+				8346A21E277F16CB00E043A8 /* Test.swift in Sources */,
 				8384F9AB276F9D300079F14A /* PersonRequest.swift in Sources */,
 				8384F9A9276F9D300079F14A /* Person.swift in Sources */,
 				837CA0F1277B794600990757 /* VereinFormView.swift in Sources */,

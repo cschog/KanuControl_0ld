@@ -28,7 +28,7 @@ extension AppDatabase {
             let dbURL = folderURL.appendingPathComponent("KanuControl.sqlite")
             let dbPool = try DatabasePool(path: dbURL.path)
             
-            print ("dbUrl: ", dbURL)
+//            print ("dbUrl: ", dbURL)
             
             // Create the AppDatabase
             let appDatabase = try AppDatabase(dbPool)

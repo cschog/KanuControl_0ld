@@ -51,7 +51,7 @@ struct PersonFormView: View {
                     .accessibility(label: Text("BIC"))
             }
         }
-        //.listStyle(InsetGroupedListStyle())
+        //.listStyle(.plain)
     }
 }
 

@@ -194,7 +194,7 @@ struct AppDatabase {
                 t.column("name", .text).notNull()       // z.B. Jugendleiter oder Wanderwart, ...
             }
             
-            // Create relationship "mitglieder"     ---> fertig
+            // Create relationship "mitglied"     ---> fertig
             try db.create(table: "mitglied") { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("personId", .integer)
@@ -259,7 +259,19 @@ extension AppDatabase {
         var errorDescription: String? {
             switch self {
             case .missingName:
-                return "Please provide a name"
+                return "Bitte Name eingeben"
+            }
+        }
+    }
+    
+    enum ValidationErrorId: LocalizedError {
+        case missingId
+        
+        var errorDescription: String? {
+            switch self {
+        
+            case .missingId:
+                return "Keine ID gefunden"
             }
         }
     }
@@ -332,7 +344,37 @@ extension AppDatabase {
             _ = try Verein.deleteAll(db)
         }
     }
+    // ---------- Mitglied -------------------
+        
+        /// Saves (inserts or updates) a mitglied. When the method returns, the
+        /// mitglied is present in the database, and its id is not nil.
+        func saveMitglied(_ mitglied: inout Mitglied) throws {
+            if (mitglied.personenId == nil || mitglied.vereinId == nil) {
+                throw ValidationErrorId.missingId
+            }
+            try dbWriter.write { db in
+
+                try mitglied.save(db)
+            }
+        }
+
+        /// Delete the specified verein
+        func deleteMitglied(ids: [Int64]) throws {
+            try dbWriter.write { db in
+                _ = try Mitglied.deleteAll(db, ids: ids)
+            }
+        }
+
+        /// Delete all Vereine
+        func deleteAllMitglieder() throws {
+            try dbWriter.write { db in
+                _ = try Mitglied.deleteAll(db)
+        }
+    }
 }
+
+
+
 
 // MARK: - Database Access: Reads
 

@@ -40,6 +40,7 @@ struct StartMenu2: View {
                       .frame(minWidth: 140)
                       .border(Color.black, width: 2)
                 
+                
                     Button("Vereine") {
                         self.showModalVereinView.toggle()
                     }
