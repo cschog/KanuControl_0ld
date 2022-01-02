@@ -15,7 +15,7 @@ extension View {
 }
 #endif
 
-struct StartMenu2: View {
+struct StartMenu: View {
     
     // @State private var selection: String? = nil
     @State private var showModalPersonView: Bool = false
@@ -62,8 +62,8 @@ struct StartMenu2: View {
     }
 }
 
-struct StartMenu2_Previews: PreviewProvider {
+struct StartMenu_Previews: PreviewProvider {
     static var previews: some View {
-        StartMenu2()
+        StartMenu()
     }
 }

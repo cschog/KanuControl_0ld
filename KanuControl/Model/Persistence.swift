@@ -28,10 +28,31 @@ extension AppDatabase {
             let dbURL = folderURL.appendingPathComponent("KanuControl.sqlite")
             let dbPool = try DatabasePool(path: dbURL.path)
             
-//            print ("dbUrl: ", dbURL)
+            print ("dbUrl: ", dbURL)
             
             // Create the AppDatabase
             let appDatabase = try AppDatabase(dbPool)
+            
+//            // Prepare the database with test fixtures if requested
+//            if CommandLine.arguments.contains("-fixedTestData") {
+//                try appDatabase.createFunktionForUI()
+//                print ("createFunktion via commandline")
+//            } else {
+//                // Otherwise, populate the database if it is empty, for better
+//                // demo purpose.
+//                try appDatabase.createFunktionForUI()
+//                print ("createFunktion")
+//            }
+            
+            // Initial load of table Funktion
+            let funktionCount = try dbPool.read {db in try Funktion.fetchCount(db)}
+            if funktionCount == 0 {
+                try appDatabase.createFunktionForUI()
+                print ("createFunktion")
+            } else {
+                print ("Anzahl Einträge in Funktion: ", funktionCount)
+            }
+    
             
             
             return appDatabase

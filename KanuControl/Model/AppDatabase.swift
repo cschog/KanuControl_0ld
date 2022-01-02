@@ -255,26 +255,18 @@ extension AppDatabase {
     /// the database.
     enum ValidationError: LocalizedError {
         case missingName
+        case missingId
         
         var errorDescription: String? {
             switch self {
             case .missingName:
                 return "Bitte Name eingeben"
-            }
-        }
-    }
-    
-    enum ValidationErrorId: LocalizedError {
-        case missingId
-        
-        var errorDescription: String? {
-            switch self {
-        
             case .missingId:
                 return "Keine ID gefunden"
             }
         }
     }
+    
 // -------- Person -----------
     /// Saves (inserts or updates) a person. When the method returns, the
     /// person is present in the database, and its id is not nil.
@@ -344,13 +336,60 @@ extension AppDatabase {
             _ = try Verein.deleteAll(db)
         }
     }
+    
+    // ---------- Funktion -------------------
+        
+        /// Saves (inserts or updates) a funktion. When the method returns, the
+        /// funktion is present in the database, and its name is not nil.
+        func saveFunktion(_ funktion: inout Funktion) throws {
+            if funktion.name.isEmpty {
+                throw ValidationError.missingName
+            }
+            try dbWriter.write { db in
+
+                try funktion.save(db)
+            }
+        }
+
+        /// Delete the specified funktion
+        func deleteFunktion(ids: [Int64]) throws {
+            try dbWriter.write { db in
+                _ = try Funktion.deleteAll(db, ids: ids)
+            }
+        }
+
+        /// Delete all Funktion(en)
+        func deleteAllFunktion() throws {
+            try dbWriter.write { db in
+                _ = try Funktion.deleteAll(db)
+            }
+        }
+    
+    static let uiFunktion = [
+        Funktion(id: nil, name: "Vorsitzende(r)"),
+        Funktion(id: nil, name: "Geschäftsführer:in"),
+        Funktion(id: nil, name: "Schatzmeister:in"),
+        Funktion(id: nil, name: "Jugendwart:in"),
+        Funktion(id: nil, name: "Wanderwart:in"),
+        Funktion(id: nil, name: "Bootshauswart:in"),
+        Funktion(id: nil, name: "Schriftwart:in"),
+        Funktion(id: nil, name: "Sportwart:in")]
+
+    func createFunktionForUI() throws {
+        try dbWriter.write { db in
+            try AppDatabase.uiFunktion.forEach { funktion in
+                _ = try funktion.inserted(db) // insert but ignore inserted id
+            }
+        }
+    }
+    
     // ---------- Mitglied -------------------
         
         /// Saves (inserts or updates) a mitglied. When the method returns, the
         /// mitglied is present in the database, and its id is not nil.
         func saveMitglied(_ mitglied: inout Mitglied) throws {
             if (mitglied.personenId == nil || mitglied.vereinId == nil) {
-                throw ValidationErrorId.missingId
+                throw ValidationError.missingId
             }
             try dbWriter.write { db in
 

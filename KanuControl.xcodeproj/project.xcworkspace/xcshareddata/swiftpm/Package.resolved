@@ -18,15 +18,6 @@
           "revision": "5e36db6148ac24f8cbfba8ed1aa27547259b2137",
           "version": null
         }
-      },
-      {
-        "package": "SSToastMessage",
-        "repositoryURL": "https://github.com/SimformSolutionsPvtLtd/SSToastMessage.git",
-        "state": {
-          "branch": null,
-          "revision": "6f8c15ae5347655a22651c94ed29a651c172e6ce",
-          "version": "1.0.0"
-        }
       }
     ]
   },
